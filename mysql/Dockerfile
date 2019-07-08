@@ -1,0 +1,5 @@
+FROM mysql:8.0.16
+
+MAINTAINER 874811226@qq.com
+
+expose 3306

@@ -1,0 +1,6 @@
+FROM nginx
+
+MAINTAINER 874811226@qq.com
+
+EXPOSE 80
+
