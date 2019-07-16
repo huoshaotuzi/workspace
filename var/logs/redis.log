@@ -434,3 +434,9 @@
 1:M 16 Jul 2019 08:45:12.440 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
 1:M 16 Jul 2019 08:45:12.443 * DB loaded from disk: 0.000 seconds
 1:M 16 Jul 2019 08:45:12.446 * Ready to accept connections
+1:signal-handler (1563266884) Received SIGTERM scheduling shutdown...
+1:M 16 Jul 2019 08:48:04.764 # User requested shutdown...
+1:M 16 Jul 2019 08:48:04.767 * Saving the final RDB snapshot before exiting.
+1:M 16 Jul 2019 08:48:04.770 * DB saved on disk
+1:M 16 Jul 2019 08:48:04.780 * Removing the pid file.
+1:M 16 Jul 2019 08:48:04.784 # Redis is now ready to exit, bye bye...
