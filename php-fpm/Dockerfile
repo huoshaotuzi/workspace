@@ -1,14 +1,17 @@
 FROM php:7.2-fpm
 
-MAINTAINER 874811226@qq.com
+MAINTAINER huotu@huotuyouxi.com
+
+# COPY sources.list /etc/apt/
+COPY ext/php-jwt ./php-jwt
 
 RUN apt-get update && apt-get install -y \
-		libfreetype6-dev \
-		libjpeg62-turbo-dev \
-		libpng-dev \
-		libssl-dev \
-		imagemagick \
-		gcc \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libssl-dev \
+    imagemagick \
+    gcc \
 	&& docker-php-ext-install -j$(nproc) iconv \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 	&& docker-php-ext-install -j$(nproc) gd \
@@ -27,6 +30,8 @@ RUN apt-get update && apt-get install -y \
     && curl 'http://pecl.php.net/get/crypto-0.3.1.tgz' -o crypto.tgz \
     && pecl install -o -f crypto.tgz \
     && docker-php-ext-enable crypto \
-    && rm -rf /tmp/pear
+    && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
+    && make && make install && cd ../ && rm -rf php-jwt \
+    && rm -rf ./*.tgz
 
 expose 9000
