@@ -1,6 +1,6 @@
 FROM nginx
 
-MAINTAINER 874811226@qq.com
+MAINTAINER huotu@huotuyouxi.com
 
 EXPOSE 80
 

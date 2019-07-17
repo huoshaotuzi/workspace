@@ -1,2 +1,5 @@
 /mysql/data
+/www/
+*.log
 .DS_Store
+/var/run
