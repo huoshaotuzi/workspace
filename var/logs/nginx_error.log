@@ -1,0 +1,155 @@
+2019/07/12 17:14:53 [error] 7#7: *1 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Class 'Yaf\Application' not found in /www/api-idce/public/index.php:10
+Stack trace:
+#0 {main}
+  thrown in /www/api-idce/public/index.php on line 10" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:14:55 [error] 7#7: *1 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Class 'Yaf\Application' not found in /www/api-idce/public/index.php:10
+Stack trace:
+#0 {main}
+  thrown in /www/api-idce/public/index.php on line 10" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:16:59 [error] 7#7: *2 FastCGI sent in stderr: "PHP message: PHP Warning:  require(/www/api-idce/vendor/autoload.php): failed to open stream: No such file or directory in /www/api-idce/application/Bootstrap.php on line 21
+PHP message: PHP Fatal error:  require(): Failed opening required '/www/api-idce/vendor/autoload.php' (include_path='.:/usr/local/lib/php') in /www/api-idce/application/Bootstrap.php on line 21" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:17:44 [error] 6#6: *2 FastCGI sent in stderr: "PHP message: PHP Warning:  require(/www/api-idce/vendor/autoload.php): failed to open stream: No such file or directory in /www/api-idce/application/Bootstrap.php on line 21
+PHP message: PHP Fatal error:  require(): Failed opening required '/www/api-idce/vendor/autoload.php' (include_path='.:/usr/local/lib/php') in /www/api-idce/application/Bootstrap.php on line 21" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:17:44 [error] 6#6: *2 FastCGI sent in stderr: "PHP message: PHP Warning:  require(/www/api-idce/vendor/autoload.php): failed to open stream: No such file or directory in /www/api-idce/application/Bootstrap.php on line 21
+PHP message: PHP Fatal error:  require(): Failed opening required '/www/api-idce/vendor/autoload.php' (include_path='.:/usr/local/lib/php') in /www/api-idce/application/Bootstrap.php on line 21" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:8088/"
+2019/07/12 17:24:28 [error] 6#6: *5 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1049] Unknown database 'idce' in /www/api-idce/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:27
+Stack trace:
+#0 /www/api-idce/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(27): PDO->__construct('mysql:host=mysq...', 'root', 'huotu@666', Array)
+#1 /www/api-idce/vendor/illuminate/database/Connectors/Connector.php(67): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=mysq...', 'root', 'huotu@666', Array)
+#2 /www/api-idce/vendor/illuminate/database/Connectors/Connector.php(46): Illuminate\Database\Connectors\Connector->createPdoConnection('mysql:host=mysq...', 'root', 'huotu@666', Array)
+#3 /www/api-idce/vendor/illuminate/database/Connectors/MySqlConnector.php(24): Illuminate\Database\Connectors\Connector->createConnection('mysql:host=mysq...', Array, Array)
+#4 /www/api-idce/vendor/illuminate/database/Connectors/ConnectionFactory.php(182): Illuminate\Database\Connectors\MySqlConnector->connect" while reading upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:24:28 [error] 6#6: *5 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Yaf\Exception\LoadFailed\Controller: Failed opening controller script /www/api-idce/public/../application/controllers/Favicon.ico.php: No such file or directory in /www/api-idce/public/index.php:12
+Stack trace:
+#0 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#1 {main}
+  thrown in /www/api-idce/public/index.php on line 12" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:8088/"
+2019/07/12 17:25:33 [error] 6#6: *5 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'idce.users' doesn't exist in /www/api-idce/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:61
+Stack trace:
+#0 /www/api-idce/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(61): PDO->prepare('select * from `...', Array)
+#1 /www/api-idce/vendor/illuminate/database/Connection.php(326): Doctrine\DBAL\Driver\PDOConnection->prepare('select * from `...')
+#2 /www/api-idce/vendor/illuminate/database/Connection.php(657): Illuminate\Database\Connection->Illuminate\Database\{closure}('select * from `...', Array)
+#3 /www/api-idce/vendor/illuminate/database/Connection.php(624): Illuminate\Database\Connection->runQueryCallback('select * from `...', Array, Object(Closure))
+#4 /www/api-idce/vendor/illuminate/database/Connection.php(333): Illuminate\Database\Connection->run('select * from `...', Array, Object(Closure))
+#5 /www/api-idce/vendor/illuminate/database/Query/Builder.php(" while reading upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:25:33 [error] 6#6: *5 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Yaf\Exception\LoadFailed\Controller: Failed opening controller script /www/api-idce/public/../application/controllers/Favicon.ico.php: No such file or directory in /www/api-idce/public/index.php:12
+Stack trace:
+#0 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#1 {main}
+  thrown in /www/api-idce/public/index.php on line 12" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:8088/"
+2019/07/12 17:30:54 [error] 6#6: *12 FastCGI sent in stderr: "PHP message: PHP Notice:  Undefined property: stdClass::$name in /www/api-idce/application/controllers/Index.php on line 18
+PHP message: PHP Notice:  Undefined property: stdClass::$name in /www/api-idce/application/controllers/Index.php on line 18
+PHP message: PHP Notice:  Undefined property: stdClass::$name in /www/api-idce/application/controllers/Index.php on line 18" while reading upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:30:54 [error] 6#6: *12 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Yaf\Exception\LoadFailed\Controller: Failed opening controller script /www/api-idce/public/../application/controllers/Favicon.ico.php: No such file or directory in /www/api-idce/public/index.php:12
+Stack trace:
+#0 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#1 {main}
+  thrown in /www/api-idce/public/index.php on line 12" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:8088/"
+2019/07/12 17:30:59 [error] 6#6: *12 FastCGI sent in stderr: "PHP message: PHP Notice:  Undefined property: stdClass::$name in /www/api-idce/application/controllers/Index.php on line 18
+PHP message: PHP Notice:  Undefined property: stdClass::$name in /www/api-idce/application/controllers/Index.php on line 18
+PHP message: PHP Notice:  Undefined property: stdClass::$name in /www/api-idce/application/controllers/Index.php on line 18" while reading upstream, client: 172.18.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:30:59 [error] 6#6: *12 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Yaf\Exception\LoadFailed\Controller: Failed opening controller script /www/api-idce/public/../application/controllers/Favicon.ico.php: No such file or directory in /www/api-idce/public/index.php:12
+Stack trace:
+#0 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#1 {main}
+  thrown in /www/api-idce/public/index.php on line 12" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:8088/"
+2019/07/12 17:31:30 [error] 6#6: *12 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Yaf\Exception\LoadFailed\Controller: Failed opening controller script /www/api-idce/public/../application/controllers/Favicon.ico.php: No such file or directory in /www/api-idce/public/index.php:12
+Stack trace:
+#0 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#1 {main}
+  thrown in /www/api-idce/public/index.php on line 12" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:8088/"
+2019/07/12 17:33:05 [error] 6#6: *21 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Yaf\Exception\LoadFailed\Controller: Failed opening controller script /www/api-idce/public/../application/modules/V1/controllers/Users.php: No such file or directory in /www/api-idce/public/index.php:12
+Stack trace:
+#0 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#1 {main}
+  thrown in /www/api-idce/public/index.php on line 12" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /v1/users/test HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:33:29 [error] 6#6: *21 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Yaf\Exception\LoadFailed\Controller: Failed opening controller script /www/api-idce/public/../application/modules/V1/controllers/Users.php: No such file or directory in /www/api-idce/public/index.php:12
+Stack trace:
+#0 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#1 {main}
+  thrown in /www/api-idce/public/index.php on line 12" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /v1/users/test HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:37:26 [error] 6#6: *25 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Class 'medoo' not found in /www/api-idce/application/Bootstrap.php:43
+Stack trace:
+#0 [internal function]: Bootstrap->_initDatabase(Object(Yaf\Dispatcher))
+#1 /www/api-idce/public/index.php(12): Yaf\Application->bootstrap()
+#2 {main}
+  thrown in /www/api-idce/application/Bootstrap.php on line 43" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /v1/user/test HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:38:01 [error] 6#6: *25 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function connection() on null in /www/api-idce/vendor/illuminate/database/Eloquent/Model.php:1253
+Stack trace:
+#0 /www/api-idce/vendor/illuminate/database/Eloquent/Model.php(1219): Illuminate\Database\Eloquent\Model::resolveConnection(NULL)
+#1 /www/api-idce/vendor/illuminate/database/Eloquent/Model.php(1051): Illuminate\Database\Eloquent\Model->getConnection()
+#2 /www/api-idce/vendor/illuminate/database/Eloquent/Model.php(968): Illuminate\Database\Eloquent\Model->newBaseQueryBuilder()
+#3 /www/api-idce/vendor/illuminate/database/Eloquent/Model.php(1004): Illuminate\Database\Eloquent\Model->newModelQuery()
+#4 /www/api-idce/vendor/illuminate/database/Eloquent/Model.php(957): Illuminate\Database\Eloquent\Model->newQueryWithoutScopes()
+#5 /www/api-idce/vendor/illuminate/database/Eloquent/Model.php(1618): Illuminate\Database\Eloquent\Model->newQuery()
+#6 /www/api-idce/vendor/illuminate/database/Eloquent/Model.php(1630): Illuminate\Database\Eloquent" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /v1/user/test HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:39:16 [error] 6#6: *28 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Medoo\Medoo::select(), 0 passed in /www/api-idce/application/modules/V1/controllers/User.php on line 7 and at least 2 expected in /www/api-idce/vendor/catfan/medoo/src/Medoo.php:1212
+Stack trace:
+#0 /www/api-idce/application/modules/V1/controllers/User.php(7): Medoo\Medoo->select()
+#1 [internal function]: UserController->testAction()
+#2 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#3 {main}
+  thrown in /www/api-idce/vendor/catfan/medoo/src/Medoo.php on line 1212" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /v1/user/test HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:39:36 [error] 6#6: *28 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Medoo\Medoo::select(), 1 passed in /www/api-idce/application/modules/V1/controllers/User.php on line 7 and at least 2 expected in /www/api-idce/vendor/catfan/medoo/src/Medoo.php:1212
+Stack trace:
+#0 /www/api-idce/application/modules/V1/controllers/User.php(7): Medoo\Medoo->select('*')
+#1 [internal function]: UserController->testAction()
+#2 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#3 {main}
+  thrown in /www/api-idce/vendor/catfan/medoo/src/Medoo.php on line 1212" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /v1/user/test HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/12 17:39:55 [error] 6#6: *28 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to a member function toArray() on array in /www/api-idce/application/modules/V1/controllers/User.php:8
+Stack trace:
+#0 [internal function]: UserController->testAction()
+#1 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#2 {main}
+  thrown in /www/api-idce/application/modules/V1/controllers/User.php on line 8" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /v1/user/test HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/13 02:01:13 [error] 6#6: *88 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Yaf\Exception\LoadFailed\Controller: Failed opening controller script /www/api-idce/public/../application/controllers/Favicon.ico.php: No such file or directory in /www/api-idce/public/index.php:12
+Stack trace:
+#0 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#1 {main}
+  thrown in /www/api-idce/public/index.php on line 12" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:8088/v1/user/test"
+2019/07/13 02:01:22 [error] 6#6: *88 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Yaf\Exception\LoadFailed\Controller: Failed opening controller script /www/api-idce/public/../application/controllers/Favicon.ico.php: No such file or directory in /www/api-idce/public/index.php:12
+Stack trace:
+#0 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#1 {main}
+  thrown in /www/api-idce/public/index.php on line 12" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:8088/v1/user/test"
+2019/07/13 02:02:02 [error] 6#6: *88 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Yaf\Exception\LoadFailed\Controller: Failed opening controller script /www/api-idce/public/../application/controllers/Favicon.ico.php: No such file or directory in /www/api-idce/public/index.php:12
+Stack trace:
+#0 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#1 {main}
+  thrown in /www/api-idce/public/index.php on line 12" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:8088/v1/user/test"
+2019/07/13 02:02:14 [error] 6#6: *88 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Yaf\Exception\LoadFailed\Controller: Failed opening controller script /www/api-idce/public/../application/controllers/Favicon.ico.php: No such file or directory in /www/api-idce/public/index.php:12
+Stack trace:
+#0 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#1 {main}
+  thrown in /www/api-idce/public/index.php on line 12" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:8088/v1/user/test"
+2019/07/13 02:02:26 [error] 6#6: *88 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Yaf\Exception\LoadFailed\Controller: Failed opening controller script /www/api-idce/public/../application/controllers/Favicon.ico.php: No such file or directory in /www/api-idce/public/index.php:12
+Stack trace:
+#0 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#1 {main}
+  thrown in /www/api-idce/public/index.php on line 12" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:8088/v1/user/test"
+2019/07/13 17:13:18 [error] 6#6: *129 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught TypeError: Argument 1 passed to Medoo\Medoo::__construct() must be of the type array, object given, called in /www/api-idce/application/Bootstrap.php on line 32 and defined in /www/api-idce/vendor/catfan/medoo/src/Medoo.php:43
+Stack trace:
+#0 /www/api-idce/application/Bootstrap.php(32): Medoo\Medoo->__construct(Object(Yaf\Config\Ini))
+#1 [internal function]: Bootstrap->_initDatabase(Object(Yaf\Dispatcher))
+#2 /www/api-idce/public/index.php(12): Yaf\Application->bootstrap()
+#3 {main}
+  thrown in /www/api-idce/vendor/catfan/medoo/src/Medoo.php on line 43" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /v1/user/test HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/13 17:13:41 [error] 6#6: *129 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Class 'Registry' not found in /www/api-idce/application/modules/V1/controllers/User.php:6
+Stack trace:
+#0 [internal function]: UserController->testAction()
+#1 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#2 {main}
+  thrown in /www/api-idce/application/modules/V1/controllers/User.php on line 6" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "GET /v1/user/test HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/14 07:18:16 [error] 6#6: *61 FastCGI sent in stderr: "PHP message: PHP Warning:  trim() expects parameter 1 to be string, array given in /www/api-idce/application/models/BaseModel.php on line 63
+PHP message: PHP Warning:  implode(): Invalid arguments passed in /www/api-idce/application/models/BaseModel.php on line 63" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "POST /v1/user/register HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/14 07:18:25 [error] 6#6: *61 FastCGI sent in stderr: "PHP message: PHP Warning:  trim() expects parameter 2 to be string, array given in /www/api-idce/application/models/BaseModel.php on line 63
+PHP message: PHP Warning:  implode(): Invalid arguments passed in /www/api-idce/application/models/BaseModel.php on line 63" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "POST /v1/user/register HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/14 07:18:28 [error] 6#6: *61 FastCGI sent in stderr: "PHP message: PHP Warning:  trim() expects parameter 2 to be string, array given in /www/api-idce/application/models/BaseModel.php on line 63
+PHP message: PHP Warning:  implode(): Invalid arguments passed in /www/api-idce/application/models/BaseModel.php on line 63" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "POST /v1/user/register HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/17 13:04:06 [error] 6#6: *85 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Class 'App\Middleware\LimitMiddleware' not found in /www/api-idce/application/Bootstrap.php:73
+Stack trace:
+#0 [internal function]: Bootstrap->_initRoute(Object(Yaf\Dispatcher))
+#1 /www/api-idce/public/index.php(12): Yaf\Application->bootstrap()
+#2 {main}
+  thrown in /www/api-idce/application/Bootstrap.php on line 73" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "POST /v1/user/login HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
