@@ -153,3 +153,16 @@ Stack trace:
 #1 /www/api-idce/public/index.php(12): Yaf\Application->bootstrap()
 #2 {main}
   thrown in /www/api-idce/application/Bootstrap.php on line 73" while reading response header from upstream, client: 172.18.0.1, server: localhost, request: "POST /v1/user/login HTTP/1.1", upstream: "fastcgi://172.18.0.3:9000", host: "127.0.0.1:8088"
+2019/07/18 15:40:44 [error] 6#6: *3 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Call to undefined function dump() in /www/api-idce/application/controllers/Index.php:9
+Stack trace:
+#0 [internal function]: IndexController->indexAction()
+#1 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#2 {main}
+  thrown in /www/api-idce/application/controllers/Index.php on line 9" while reading response header from upstream, client: 172.19.0.1, server: localhost, request: "POST / HTTP/1.1", upstream: "fastcgi://172.19.0.4:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:3000/user/login"
+2019/07/18 15:47:52 [error] 6#6: *12 FastCGI sent in stderr: "PHP message: PHP Fatal error:  Uncaught Error: Class 'App\Models\UserModel' not found in /www/api-idce/application/services/UserService.php:40
+Stack trace:
+#0 /www/api-idce/application/modules/V1/controllers/User.php(52): App\Services\UserService->getLoginResult(Array)
+#1 [internal function]: UserController->loginAction()
+#2 /www/api-idce/public/index.php(12): Yaf\Application->run()
+#3 {main}
+  thrown in /www/api-idce/application/services/UserService.php on line 40" while reading response header from upstream, client: 172.19.0.1, server: localhost, request: "POST /v1/user/login HTTP/1.1", upstream: "fastcgi://172.19.0.4:9000", host: "127.0.0.1:8088", referrer: "http://127.0.0.1:3000/user/login"

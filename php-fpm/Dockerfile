@@ -27,10 +27,7 @@ RUN apt-get update && apt-get install -y \
     && curl 'http://pecl.php.net/get/swoole-4.3.5.tgz' -o swoole.tgz \
     && pecl install -o -f swoole.tgz \
     && docker-php-ext-enable swoole \
-    && curl 'http://pecl.php.net/get/crypto-0.3.1.tgz' -o crypto.tgz \
-    && pecl install -o -f crypto.tgz \
-    && docker-php-ext-enable crypto \
-    && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
+    && cd ext/php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
     && make && make install && cd ../ && rm -rf php-jwt \
     && rm -rf ./*.tgz
 
