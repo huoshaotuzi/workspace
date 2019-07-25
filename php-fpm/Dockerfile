@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libpng-dev \
     libssl-dev \
+    libgmp-dev \
     imagemagick \
     gcc \
 	&& docker-php-ext-install -j$(nproc) iconv \
@@ -18,6 +19,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install sockets \
+    && docker-php-ext-install gmp \
     && curl 'http://pecl.php.net/get/redis-5.0.0.tgz' -o redis.tgz \
     && pecl install -o -f redis.tgz \
     && docker-php-ext-enable redis \
@@ -27,7 +29,7 @@ RUN apt-get update && apt-get install -y \
     && curl 'http://pecl.php.net/get/swoole-4.3.5.tgz' -o swoole.tgz \
     && pecl install -o -f swoole.tgz \
     && docker-php-ext-enable swoole \
-    && cd ext/php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
+    && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
     && make && make install && cd ../ && rm -rf php-jwt \
     && rm -rf ./*.tgz
 
