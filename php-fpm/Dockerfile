@@ -2,6 +2,8 @@ FROM php:7.2-fpm
 
 MAINTAINER huotu@huotuyouxi.com
 
+WORKDIR /www
+
 # COPY sources.list /etc/apt/
 COPY ext/php-jwt ./php-jwt
 
