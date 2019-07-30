@@ -26,6 +26,9 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install sockets \
     && docker-php-ext-install gmp \
+    && export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS" \
+    && apt-get install -y --no-install-recommends libmagickwand-dev \
+    && rm -r /var/lib/apt/lists/* \
     && pecl install imagick-3.4.4 && docker-php-ext-enable imagick \
     && pecl install mcrypt-1.0.2 && docker-php-ext-enable mcrypt \
     && docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install opcache \
