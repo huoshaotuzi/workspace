@@ -7,13 +7,18 @@ WORKDIR /www
 # COPY sources.list /etc/apt/
 COPY ext/php-jwt ./php-jwt
 
-RUN apt-get update && apt-get install -y \
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
+    && echo 'deb http://mirrors.163.com/debian/ stretch main non-free contrib' > /etc/apt/sources.list \
+    && echo 'deb http://mirrors.163.com/debian/ stretch-updates main non-free contrib' >> /etc/apt/sources.list \
+    && echo 'deb http://mirrors.163.com/debian-security/ stretch/updates main non-free contrib' >> /etc/apt/sources.list \
+    && apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
     libssl-dev \
     libgmp-dev \
     imagemagick \
+    libmcrypt-dev \
     gcc \
 	&& docker-php-ext-install -j$(nproc) iconv \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
@@ -22,6 +27,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install sockets \
     && docker-php-ext-install gmp \
+    && pecl install mcrypt-1.0.2 && docker-php-ext-enable mcrypt \
+    && docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install opcache \
+    && pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug \
     && curl 'http://pecl.php.net/get/redis-5.0.0.tgz' -o redis.tgz \
     && pecl install -o -f redis.tgz \
     && docker-php-ext-enable redis \
