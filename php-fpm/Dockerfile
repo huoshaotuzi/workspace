@@ -34,9 +34,9 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     && docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install opcache \
     && pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug \
     && pecl install redis-5.0.0 && docker-php-ext-enable redis \
-    && pecl install yaf-3.0.8 && docker-php-ext-enable yaf \
-    && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
-    && make && make install && cd ../ && rm -rf php-jwt \
-    && rm -rf ./*.tgz
+    && pecl install yaf-3.0.8 && docker-php-ext-enable yaf 
+    # && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
+    # && make && make install && cd ../ && rm -rf php-jwt \
+    # && rm -rf ./*.tgz
 
 expose 9000
