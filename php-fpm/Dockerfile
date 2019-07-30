@@ -24,7 +24,7 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
 	&& docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install mysqli \
-    && docker-php-ext-install sockets \
+    && docker-php-ext-install sockets \ 
     && docker-php-ext-install gmp \
     && export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS" \
     && apt-get install -y --no-install-recommends libmagickwand-dev \
@@ -35,7 +35,6 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     && pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug \
     && pecl install redis-5.0.0 && docker-php-ext-enable redis \
     && pecl install yaf-3.0.8 && docker-php-ext-enable yaf \
-    && pecl install swoole-4.4.0 && docker-php-ext-enable swoole \
     && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
     && make && make install && cd ../ && rm -rf php-jwt \
     && rm -rf ./*.tgz
