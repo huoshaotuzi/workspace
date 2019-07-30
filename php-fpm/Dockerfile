@@ -26,9 +26,10 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install sockets \
     && docker-php-ext-install gmp \
-    && pecl install mcrypt-1.0.2 && docker-php-ext-enable mcrypt \
+    && pecl install imagick && docker-php-ext-enable imagick \
+    && pecl install mcrypt && docker-php-ext-enable mcrypt \
     && docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install opcache \
-    && pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug \
+    && pecl install xdebug && docker-php-ext-enable xdebug \
     && curl 'http://pecl.php.net/get/redis-5.0.0.tgz' -o redis.tgz \
     && pecl install -o -f redis.tgz && docker-php-ext-enable redis \
     && curl 'http://pecl.php.net/get/yaf-3.0.8.tgz' -o yaf.tgz \
