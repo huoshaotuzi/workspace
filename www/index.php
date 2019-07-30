@@ -16,5 +16,6 @@
 
 <p align="center"><?php echo "let's enjoy!" ?></p>
 
+<p align="center"><?php var_dump(get_loaded_extensions()); ?></p>
 </body>
 </html>

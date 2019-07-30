@@ -19,13 +19,11 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     imagemagick \
     libmcrypt-dev \
     gcc \
+    && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
+    && make && make install && cd ../ && rm -rf php-jwt \
 	&& docker-php-ext-install -j$(nproc) iconv \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-	&& docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install pdo_mysql \
-    && docker-php-ext-install mysqli \
-    && docker-php-ext-install sockets \ 
-    && docker-php-ext-install gmp \
+	&& docker-php-ext-install -j$(nproc) gd mysqli pdo_mysql sockets gmp \
     && export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS" \
     && apt-get install -y --no-install-recommends libmagickwand-dev \
     && rm -r /var/lib/apt/lists/* \
@@ -34,9 +32,6 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     && docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install opcache \
     && pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug \
     && pecl install redis-5.0.0 && docker-php-ext-enable redis \
-    && pecl install yaf-3.0.8 && docker-php-ext-enable yaf 
-    # && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
-    # && make && make install && cd ../ && rm -rf php-jwt \
-    # && rm -rf ./*.tgz
+    && pecl install yaf-3.0.8 && docker-php-ext-enable yaf
 
 expose 9000
