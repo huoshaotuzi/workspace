@@ -4,7 +4,6 @@ MAINTAINER huotu@huotuyouxi.com
 
 WORKDIR /www
 
-# COPY sources.list /etc/apt/
 COPY ext/php-jwt ./php-jwt
 
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
