@@ -26,13 +26,13 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install sockets \
     && docker-php-ext-install gmp \
-    && pecl install imagick && docker-php-ext-enable imagick \
-    && pecl install mcrypt && docker-php-ext-enable mcrypt \
+    && pecl install imagick-3.4.4 && docker-php-ext-enable imagick \
+    && pecl install mcrypt-1.0.2 && docker-php-ext-enable mcrypt \
     && docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install opcache \
-    && pecl install xdebug && docker-php-ext-enable xdebug \
-    && pecl install redis && docker-php-ext-enable redis \
-    && pecl install yaf && docker-php-ext-enable yaf \
-    && pecl install swoole && docker-php-ext-enable swoole \
+    && pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug \
+    && pecl install redis-5.0.0 && docker-php-ext-enable redis \
+    && pecl install yaf-3.0.8 && docker-php-ext-enable yaf \
+    && pecl install swoole-4.4.0 && docker-php-ext-enable swoole \
     && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
     && make && make install && cd ../ && rm -rf php-jwt \
     && rm -rf ./*.tgz
