@@ -30,14 +30,11 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     && docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install opcache \
     && pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug \
     && curl 'http://pecl.php.net/get/redis-5.0.0.tgz' -o redis.tgz \
-    && pecl install -o -f redis.tgz \
-    && docker-php-ext-enable redis \
+    && pecl install -o -f redis.tgz && docker-php-ext-enable redis \
     && curl 'http://pecl.php.net/get/yaf-3.0.8.tgz' -o yaf.tgz \
-    && pecl install -o -f yaf.tgz \
-    && docker-php-ext-enable yaf \
+    && pecl install -o -f yaf.tgz && docker-php-ext-enable yaf \
     && curl 'http://pecl.php.net/get/swoole-4.3.5.tgz' -o swoole.tgz \
-    && pecl install -o -f swoole.tgz \
-    && docker-php-ext-enable swoole \
+    && pecl install -o -f swoole.tgz && docker-php-ext-enable swoole \
     && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
     && make && make install && cd ../ && rm -rf php-jwt \
     && rm -rf ./*.tgz
