@@ -6,10 +6,7 @@ WORKDIR /www
 
 COPY ext/php-jwt ./php-jwt
 
-RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
-    && echo 'deb http://mirrors.163.com/debian/ stretch main non-free contrib' > /etc/apt/sources.list \
-    && echo 'deb http://mirrors.163.com/debian/ stretch-updates main non-free contrib' >> /etc/apt/sources.list \
-    && echo 'deb http://mirrors.163.com/debian-security/ stretch/updates main non-free contrib' >> /etc/apt/sources.list \
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && apt-get update && apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -19,15 +16,15 @@ RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak \
     imagemagick \
     libmcrypt-dev \
     gcc \
-    && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
-    && make && make install && cd ../ && rm -rf php-jwt \
+#    && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
+   # && make && make install && cd ../ && rm -rf php-jwt \
 	&& docker-php-ext-install -j$(nproc) iconv \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 	&& docker-php-ext-install -j$(nproc) gd mysqli pdo_mysql sockets gmp \
-    && export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS" \
-    && apt-get install -y --no-install-recommends libmagickwand-dev \
-    && rm -r /var/lib/apt/lists/* \
-    && pecl install imagick-3.4.4 && docker-php-ext-enable imagick \
+    #&& export CFLAGS="$PHP_CFLAGS" CPPFLAGS="$PHP_CPPFLAGS" LDFLAGS="$PHP_LDFLAGS" \
+    #&& apt-get install -y --no-install-recommends libmagickwand-dev \
+    #&& rm -r /var/lib/apt/lists/* \
+    #&& pecl install imagick-3.4.4 && docker-php-ext-enable imagick \
     && pecl install mcrypt-1.0.2 && docker-php-ext-enable mcrypt \
     && docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install opcache \
     && pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug \
