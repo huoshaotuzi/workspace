@@ -6,7 +6,7 @@ services:
         depends_on:
           - php-fpm
         ports:
-          - "8088:80"
+          - "80:80"
           - "443:443"
         volumes:
           - ./www:/www
@@ -31,7 +31,7 @@ services:
         build: mysql/
         restart: always
         ports:
-          - "8406:3306"
+          - "3306:3306"
         environment:
           - TZ=Asia/Shanghai
           - MYSQL_DATABASE=test
@@ -45,7 +45,7 @@ services:
         command:
           --default-authentication-plugin=mysql_native_password
           --character-set-server=utf8mb4
-          --collation-server=utf8mb4_unicode_ci
+          --collation-server=utf8mb4_general_ci
     redis:
         build: redis/
         restart: always
@@ -53,7 +53,7 @@ services:
           - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
           - ./var/logs/redis.log:/var/log/redis.log
         ports:
-          - "2379:6379"
+          - "6379:6379"
         networks:
           - default
 networks:
