@@ -13,11 +13,11 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     libpng-dev \
     libssl-dev \
     libgmp-dev \
-    imagemagick \
+    # imagemagick \
     libmcrypt-dev \
     gcc \
-#    && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
-   # && make && make install && cd ../ && rm -rf php-jwt \
+    && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
+    && make && make install \
 	&& docker-php-ext-install -j$(nproc) iconv \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 	&& docker-php-ext-install -j$(nproc) gd mysqli pdo_mysql sockets gmp \
