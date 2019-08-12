@@ -3,3 +3,4 @@
 /var/logs/
 .DS_Store
 /var/run
+/nginx/ssl/
