@@ -4,7 +4,7 @@ MAINTAINER huotu@huotuyouxi.com
 
 WORKDIR /www
 
-COPY ext/php-jwt ./php-jwt
+COPY ext/php-jwt ./ext/php-jwt
 
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && apt-get update && apt-get install -y \
@@ -16,8 +16,8 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     # imagemagick \
     libmcrypt-dev \
     gcc \
-    && cd php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
-    && make && make install \
+    && cd ext/php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
+    && make && make install && ../ && rm -rf php-jwt \
 	&& docker-php-ext-install -j$(nproc) iconv \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 	&& docker-php-ext-install -j$(nproc) gd mysqli pdo_mysql sockets gmp \

@@ -26,7 +26,6 @@ services:
           - ./www:/www
           - ./var/run:/var/run
           - ./php-fpm/conf/php.ini:/usr/local/etc/php/php.ini
-          - ./php-fpm/ext:/www/php-ext
         networks:
           - default
     mysql:
