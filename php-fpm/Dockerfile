@@ -16,6 +16,7 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     # imagemagick \
     libmcrypt-dev \
     gcc \
+    libcurl4-gnutls-dev \
     && cd ext/php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
     && make && make install \
 	&& docker-php-ext-install -j$(nproc) iconv \
@@ -29,6 +30,8 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install opcache \
     && pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug \
     && pecl install redis-5.0.0 && docker-php-ext-enable redis \
-    && pecl install yaf-3.0.8 && docker-php-ext-enable yaf
+    && pecl install yaf-3.0.8 && docker-php-ext-enable yaf \
+    && pecl install msgpack && docker-php-ext-enable msgpack \
+    && pecl install yar && docker-php-ext-enable yar
 
 expose 9000
