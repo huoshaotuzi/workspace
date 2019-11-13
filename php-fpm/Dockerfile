@@ -4,8 +4,6 @@ MAINTAINER huotu@huotuyouxi.com
 
 WORKDIR /www
 
-COPY ext/php-jwt ./ext/php-jwt
-
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && apt-get update && apt-get install -y \
     libfreetype6-dev \
@@ -16,8 +14,6 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     libmcrypt-dev \
     gcc \
     libcurl4-gnutls-dev \
-    && cd ext/php-jwt && phpize && ./configure --with-openssl=/usr/bin/openssl \
-    && make && make install \
 	&& docker-php-ext-install -j$(nproc) iconv \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 	&& docker-php-ext-install -j$(nproc) gd mysqli pdo_mysql sockets gmp \
@@ -27,7 +23,8 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && pecl install swoole-4.4.8 && docker-php-ext-enable swoole \
     && pecl install redis-5.0.0 && docker-php-ext-enable redis \
     && pecl install yaf-3.0.8 && docker-php-ext-enable yaf \
-    && pecl install msgpack && docker-php-ext-enable msgpack \
-    && pecl install yar && docker-php-ext-enable yar
+    && pecl install yar && docker-php-ext-enable yar \
+    && pecl install msgpack && docker-php-ext-enable msgpack
+    
 
 expose 9000
