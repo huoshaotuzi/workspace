@@ -16,7 +16,7 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     libcurl4-gnutls-dev \
 	&& docker-php-ext-install -j$(nproc) iconv \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-	&& docker-php-ext-install -j$(nproc) gd mysqli pdo_mysql sockets gmp \
+	&& docker-php-ext-install -j$(nproc) gd mysqli pdo_mysql sockets gmp bcmath\
     && pecl install mcrypt-1.0.2 && docker-php-ext-enable mcrypt \
     # && docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install opcache \
     # && pecl install xdebug-2.7.2 && docker-php-ext-enable xdebug \
