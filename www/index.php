@@ -11,11 +11,11 @@
 <h1 align="center">Docker-compose</h1>
 <h3 align="center">PHP+MySQL+Redis</h3>
 <h4 align="center">author：<u>huoshaotuzi</u>，email：<u>huotu@huotuyouxi.com</u></h4>
-<p align="center"><a href="https://php.huotuyouxi.com" target="_blank"><<< My Blog >>></a></p>
 <p align="center"><a href="https://github.com/huoshaotuzi/workspace" target="_blank">Github Page</a></p>
 
 <p align="center"><?php echo "let's enjoy!" ?></p>
+<h3 align="center">Extension</h3>
 
-<p align="center"><?php var_dump(get_loaded_extensions()); ?></p>
+<p><?php echo implode(',', get_loaded_extensions()); ?></p>
 </body>
 </html>
