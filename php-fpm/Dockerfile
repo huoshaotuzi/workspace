@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install bcmath mysqli pdo_mysql sockets \
-    && docker-php-ext-install gmp opcache
+    && docker-php-ext-install gmp opcache \
+    && pecl install redis-5.1.1 \
+    && pecl install swoole-4.4.12 \
+    && docker-php-ext-enable swoole redis
 
 EXPOSE 9000
