@@ -4,9 +4,6 @@ DOCKER_COMPOSE_VERSION="1.23.2"
 # yum
 yum update
 
-# Git
-yum install -y git
-
 # Docker
 yum install -y yum-utils \
   device-mapper-persistent-data \
