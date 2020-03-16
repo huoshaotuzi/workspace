@@ -2,7 +2,7 @@
 DOCKER_COMPOSE_VERSION="1.23.2"
 
 # yum
-yum update
+# yum update
 
 # Docker
 yum install -y yum-utils \
