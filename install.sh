@@ -1,6 +1,9 @@
 # version
 DOCKER_COMPOSE_VERSION="1.23.2"
 
+# git
+git config --global credential.helper store
+
 # yum
 # yum update
 
