@@ -52,6 +52,9 @@ services:
         volumes:
           - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
           - ./var/logs/redis.log:/var/log/redis.log
+        environment: 
+          - REDIS_PORT=6379
+          - REDIS_PASSWORD=your-redis-password
         ports:
           - "6379:6379"
         networks:
