@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev libjpeg62-turbo-dev \
     libpng-dev libjpeg62-turbo-dev libssl-dev gcc \
     libgmp-dev libmcrypt-dev build-essential  \
-    curl git unzip wget zip sudo vim \
+    curl git unzip wget zip sudo vim cron \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install bcmath mysqli pdo_mysql sockets \
