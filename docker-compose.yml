@@ -1,65 +1,91 @@
 version: "3"
 services:
-    nginx:
-        build: nginx/
-        restart: always
-        depends_on:
-          - php-fpm
-        ports:
-          - "80:80"
-          - "443:443"
-        volumes:
-          - ./www:/www
-          - ./var/logs:/var/log/nginx
-          - ./nginx/conf/conf.d:/etc/nginx/conf.d
-          - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
-          - ./nginx/ssl:/etc/nginx/ssl
-        networks:
-          - default
-    php-fpm:
-        build: php-fpm/
-        restart: always
-        depends_on:
-          - mysql
-          - redis
-        volumes:
-          - ./www:/www
-          - ./var/run:/var/run
-          - ./php-fpm/conf/php.ini:/usr/local/etc/php/php.ini
-        networks:
-          - default
-    mysql:
-        build: mysql/
-        restart: always
-        ports:
-          - "3306:3306"
-        environment:
-          - TZ=Asia/Shanghai
-          - MYSQL_DATABASE=workspace
-          - MYSQL_ROOT_PASSWORD=huotu666
-        volumes:
-          - ./var/run:/run/mysqld
-          - ./mysql/data:/var/lib/mysql
-          - ./mysql/conf/my.cnf:/etc/my.cnf
-        networks:
-          - default
-        command:
-          --default-authentication-plugin=mysql_native_password
-          --character-set-server=utf8mb4
-          --collation-server=utf8mb4_general_ci
-    redis:
-        build: redis/
-        restart: always
-        volumes:
-          - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
-          - ./var/logs/redis.log:/var/log/redis.log
-        environment: 
-          - REDIS_PORT=6379
-          - REDIS_PASSWORD=your-redis-password
-        ports:
-          - "6379:6379"
-        networks:
-          - default
+  nginx:
+    build: nginx/
+    restart: always
+    depends_on:
+      - php-fpm56
+      - php-fpm72
+      - php-fpm74
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./www:/www
+      - ./var/logs:/var/log/nginx
+      - ./nginx/conf/conf.d:/etc/nginx/conf.d
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+      - ./nginx/php-fpm:/etc/nginx/php-fpm
+    networks:
+      - default
+  php-fpm56:
+    build: php-fpm56/
+    restart: always
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - ./www:/www
+      - ./var/run:/var/run
+      - ./php-fpm56/conf/php.ini:/usr/local/etc/php/php.ini
+    networks:
+      - default
+  php-fpm72:
+    build: php-fpm72/
+    restart: always
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - ./www:/www
+      - ./var/run:/var/run
+      - ./php-fpm72/conf/php.ini:/usr/local/etc/php/php.ini
+    networks:
+      - default
+  php-fpm74:
+    build: php-fpm74/
+    restart: always
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - ./www:/www
+      - ./var/run:/var/run
+      - ./php-fpm74/conf/php.ini:/usr/local/etc/php/php.ini
+    networks:
+      - default
+  mysql:
+    build: mysql/
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_DATABASE=workspace
+      - MYSQL_ROOT_PASSWORD=huotu666
+    volumes:
+      - ./var/run:/run/mysqld
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf/my.cnf:/etc/my.cnf
+    networks:
+      - default
+    command: --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+  redis:
+    build: redis/
+    restart: always
+    volumes:
+      - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./var/logs/redis.log:/var/log/redis.log
+    environment:
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=your-redis-password
+    ports:
+      - "6379:6379"
+    networks:
+      - default
 networks:
-    default:
-        driver: bridge
+  default:
+    driver: bridge
