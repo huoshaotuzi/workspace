@@ -10,8 +10,7 @@ RUN apt-get update && apt-get install -y \
     libpng-dev libjpeg62-turbo-dev libssl-dev gcc \
     libgmp-dev libmcrypt-dev build-essential  \
     curl git unzip wget zip sudo vim cron \
-    && docker-php-ext-install -j$(nproc) iconv mcrypt \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install bcmath mysqli pdo_mysql sockets \
     && docker-php-ext-install gmp
