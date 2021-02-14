@@ -2,15 +2,16 @@ FROM php:7.2-fpm
 
 COPY ./sources.list /etc/apt/sources.list
 
-ENV PHPREDIS_VERSION 5.1.1
-ENV SWOOLE_VERSION 4.5.2
+ENV PHPREDIS_VERSION 5.3.3
+ENV SWOOLE_VERSION 4.6.3
 
 RUN apt-get update && apt-get install -y \
     libfreetype6-dev libjpeg62-turbo-dev \
     libpng-dev libjpeg62-turbo-dev libssl-dev gcc \
     libgmp-dev libmcrypt-dev build-essential  \
     curl git unzip wget zip sudo vim cron \
-    #&& docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) iconv mcrypt \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install bcmath mysqli pdo_mysql sockets \
     && docker-php-ext-install gmp 
