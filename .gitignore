@@ -5,3 +5,4 @@
 /var/run
 /nginx/ssl/
 /nginx/conf/conf.d
+.idea
